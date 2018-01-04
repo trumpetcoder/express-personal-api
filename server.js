@@ -47,7 +47,8 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "A little bit of info about me"}, // CHANGED
       {method: "GET", path: "/api/trumpet", description: "A collection of great trumpet players"}, // CHANGED
       {method: "GET", path: "/api/trumpet/:id", description: "Grab one trumpet player by an id"}, // ADDED
-      {method: "DELETE", path: "/api/trumpet/:id", description: "Delete one player by id tested in postman"} // CHANGED
+      {method: "DELETE", path: "/api/trumpet/:id", description: "Delete one player by id tested in postman"}, // CHANGED
+      {method: "POST", path: "/api/trumpet", description: "Adding a new player to db, tested in postman"}
     ]
   });
 });
@@ -85,23 +86,24 @@ app.get('/api/trumpet/:id', function (req, res) {
 });
 
 // create new player
-// app.post('/api/trumpet', function (req, res) {
-//   var newPlayer = new db.Trumpets({
-//     name: String,
-//     city: String,
-//     song: String,
-//     alive: String
-//   });
-// });
-// // save new player
-//   newPlayer.save(function(err, player) {
-//     if (err) {
-//       return console.log('save error: ' + err);      
-//     }
-//     console.log('save ', player.name);
-//     res.json(player);
-// });
-
+app.post('/api/trumpet', function (req, res) {
+  console.log(req.body.name);
+  var newPlayer = new db.Trumpets({
+    name: req.body.name,
+    city: req.body.city,
+    song: req.body.song,
+    alive: req.body.alive
+  });
+  console.log(newPlayer);
+  // save new player
+    db.Trumpets.create(newPlayer, function (err, player) {
+      if (err) {
+        return console.log('save error: ' + err);      
+      }
+      console.log('save ', player.name);
+      res.json(player);
+  });
+});
 // delete a player
 app.delete('/api/trumpet/:id', function (req, res) {
   // get trumpet id from url params (`req.params`)
