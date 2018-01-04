@@ -67,6 +67,18 @@ app.get('/api/profile', function(req, res) {
   });
 });
 
+app.get('/api/players', function(req, res) {
+  // Favorite Player setup
+  res.json({
+    name: 'Clark Terry',
+    city: 'St. Louis',
+    songs: [
+    {
+      name: 'Mumbles'
+    }]
+  });
+});
+
 /**********
  * SERVER *
  **********/
