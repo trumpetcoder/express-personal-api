@@ -66,6 +66,16 @@ app.get('/api/profile', function(req, res) {
       }]
   });
 });
+
+// get all players
+app.get('/api/trumpet', function (req, res) {
+  // send all players as JSON response
+  db.Trumpets.find(function (err, trumpet) {
+    res.json(trumpet);
+  });
+      
+  
+});
 // hardcoded trumpet player info
 // app.get('/api/players', function(req, res) {
 //   // Favorite Player setup
