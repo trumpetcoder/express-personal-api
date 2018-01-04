@@ -64,8 +64,6 @@ app.get('/api/profile', function(req, res) {
         breed: 'Calico'
 
       }]
-
-
   });
 });
 
