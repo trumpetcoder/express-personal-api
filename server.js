@@ -72,10 +72,67 @@ app.get('/api/trumpet', function (req, res) {
   // send all players as JSON response
   db.Trumpets.find(function (err, trumpet) {
     res.json(trumpet);
-  });
-      
-  
+  });  
 });
+
+// get one player by id
+app.get('/api/trumpet/:id', function (req, res) {
+  db.Trumpets.findOne({_id: req.params.id}, function (req, trumpet) {
+    res.json(trumpet);
+  });
+});
+
+// create new player
+app.post('/api/trumpet', function (req, res) {
+  var newPlayer = new db.Trumpets({
+    name: String,
+    city: String,
+    song: String,
+    alive: String
+  });
+});
+// save new player
+  newPlayer.save(function(err, player) {
+    if (err) {
+      return console.log('save error: ' + err);      
+    }
+    console.log('save ', player.name);
+    res.json(player);
+});
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 
+
+
 // hardcoded trumpet player info
 // app.get('/api/players', function(req, res) {
 //   // Favorite Player setup

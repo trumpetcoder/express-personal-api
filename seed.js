@@ -41,15 +41,17 @@ var trumpet_Players = [
 
 
 // {description: 'Great Trumpet Players'};
+db.Trumpets.remove({}, function(err, trumpet){
 
-db.Trumpets.create(trumpet_Players, function(err, player) {
+	db.Trumpets.create(trumpet_Players, function(err, player) {
 
-	if (err){
+	  if (err){
 		return console.log('Error:', err);
-	}
-	console.log(player);
-	console.log('Created new Player', player._id);
-	process.exit();
+	  }
+	    console.log(player);
+	    console.log('Created new Player', player._id);
+	    process.exit();
+    });
 });
 
 
