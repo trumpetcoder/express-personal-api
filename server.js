@@ -12,7 +12,7 @@ app.use(bodyParser.json());
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -66,18 +66,18 @@ app.get('/api/profile', function(req, res) {
       }]
   });
 });
-
-app.get('/api/players', function(req, res) {
-  // Favorite Player setup
-  res.json({
-    name: 'Clark Terry',
-    city: 'St. Louis',
-    songs: [
-    {
-      name: 'Mumbles'
-    }]
-  });
-});
+// hardcoded trumpet player info
+// app.get('/api/players', function(req, res) {
+//   // Favorite Player setup
+//   res.json({
+//     name: 'Clark Terry',
+//     city: 'St. Louis',
+//     songs: [
+//     {
+//       name: 'Mumbles'
+//     }]
+//   });
+// });
 
 /**********
  * SERVER *
