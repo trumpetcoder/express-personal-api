@@ -40,14 +40,32 @@ app.get('/api', function api_index(req, res) {
   res.json({
     woops_i_has_forgot_to_document_all_my_endpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentation_url: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
-    base_url: "http://YOUR-APP-NAME.herokuapp.com", // CHANGE ME
+    documentation_url: "https://github.com/trumpetcoder/express_self_api/README.md", // CHANGED
+    base_url: "https://sheltered-plains-59181.herokuapp.com/", // CHANGED
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
       {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
     ]
-  })
+  });
+});
+
+app.get('/api/profile', function(req, res) {
+  // Profile Setup
+  res.json({
+    name: 'Kevin James',
+    city: 'Denver',
+    message: 'Learning to be a Web-Dev',
+    github: 'https://github.com/trumpetcoder',
+    pets: [
+      {
+        cat: 'Clyde',
+        dog: 'Hank'
+
+      }]
+
+
+  });
 });
 
 /**********
