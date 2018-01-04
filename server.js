@@ -38,14 +38,16 @@ app.get('/', function homepage(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woops_i_has_forgot_to_document_all_my_endpoints: true, // CHANGE ME ;)
+    woops_i_has_forgot_to_document_all_my_endpoints: false, // CHANGED ;)
     message: "Welcome to my personal api! Here's what you need to know!",
     documentation_url: "https://github.com/trumpetcoder/express_self_api/README.md", // CHANGED
     base_url: "https://sheltered-plains-59181.herokuapp.com/", // CHANGED
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"} // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "A little bit of info about me"}, // CHANGED
+      {method: "GET", path: "/api/trumpet", description: "A collection of great trumpet players"}, // CHANGED
+      {method: "GET", path: "/api/trumpet/:id", description: "Grab one trumpet player by an id"}, // ADDED
+      {method: "DELETE", path: "/api/trumpet/:id", description: "Delete one player by id tested in postman"} // CHANGED
     ]
   });
 });
