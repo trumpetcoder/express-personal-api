@@ -55,12 +55,13 @@ app.get('/api/profile', function(req, res) {
   res.json({
     name: 'Kevin James',
     city: 'Denver',
-    message: 'Learning to be a Web-Dev',
-    github: 'https://github.com/trumpetcoder',
+    github_profile_image: 'https://unsplash.com/photos/bL8MDg0p_nI',
+    github_link: 'https://github.com/trumpetcoder',
     pets: [
       {
-        cat: 'Clyde',
-        dog: 'Hank'
+        name: 'Clyde',
+        type: 'Cat',
+        breed: 'Calico'
 
       }]
 
