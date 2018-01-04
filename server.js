@@ -83,24 +83,35 @@ app.get('/api/trumpet/:id', function (req, res) {
 });
 
 // create new player
-app.post('/api/trumpet', function (req, res) {
-  var newPlayer = new db.Trumpets({
-    name: String,
-    city: String,
-    song: String,
-    alive: String
+// app.post('/api/trumpet', function (req, res) {
+//   var newPlayer = new db.Trumpets({
+//     name: String,
+//     city: String,
+//     song: String,
+//     alive: String
+//   });
+// });
+// // save new player
+//   newPlayer.save(function(err, player) {
+//     if (err) {
+//       return console.log('save error: ' + err);      
+//     }
+//     console.log('save ', player.name);
+//     res.json(player);
+// });
+
+// delete a player
+app.delete('/api/trumpet/:id', function (req, res) {
+  // get trumpet id from url params (`req.params`)
+  console.log('trumpet delete', req.params);
+  var delTrumpet = req.params.id;
+  // find the index of the trumpet we want to remove
+  db.Trumpets.findOneAndRemove({ _id: delTrumpet }, function (err, deletedPlayer) {
+    res.json(deletedPlayer);
   });
 });
-// save new player
-  newPlayer.save(function(err, player) {
-    if (err) {
-      return console.log('save error: ' + err);      
-    }
-    console.log('save ', player.name);
-    res.json(player);
-});
 
-  
+
 
 
 
