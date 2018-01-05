@@ -47,9 +47,9 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/profile", description: "A little bit of info about me"}, // CHANGED
       {method: "GET", path: "/api/trumpet", description: "Return a collection of all trumpet players in db"}, // CHANGED
       {method: "GET", path: "/api/trumpet/:id", description: "Grab one trumpet player by an id"}, // ADDED
-      {method: "DELETE", path: "/api/trumpet/:id", description: "Delete one player by id tested in postman"}, // CHANGED
-      {method: "POST", path: "/api/trumpet", description: "Adding a new player to db, tested in postman"},
-      {method: "PUT", path: "/api/trumpet/:id", description: "Updating a particular value based of an id"}
+      {method: "DELETE", path: "/api/trumpet/:id", description: "Delete one player by id tested in postman"}, // ADDED
+      {method: "POST", path: "/api/trumpet", description: "Adding a new player to db, tested in postman"}, // ADDED
+      {method: "PUT", path: "/api/trumpet/:id", description: "Updating a particular value based off an id, this is setup to update the song key"} // ADDED
     ]
   });
 });
