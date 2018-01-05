@@ -45,10 +45,11 @@ app.get('/api', function api_index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
       {method: "GET", path: "/api/profile", description: "A little bit of info about me"}, // CHANGED
-      {method: "GET", path: "/api/trumpet", description: "A collection of great trumpet players"}, // CHANGED
+      {method: "GET", path: "/api/trumpet", description: "Return a collection of all trumpet players in db"}, // CHANGED
       {method: "GET", path: "/api/trumpet/:id", description: "Grab one trumpet player by an id"}, // ADDED
       {method: "DELETE", path: "/api/trumpet/:id", description: "Delete one player by id tested in postman"}, // CHANGED
-      {method: "POST", path: "/api/trumpet", description: "Adding a new player to db, tested in postman"}
+      {method: "POST", path: "/api/trumpet", description: "Adding a new player to db, tested in postman"},
+      {method: "PUT", path: "/api/trumpet/:id", description: "Updating a particular value based of an id"}
     ]
   });
 });
@@ -104,6 +105,21 @@ app.post('/api/trumpet', function (req, res) {
       res.json(player);
   });
 });
+
+// Update a trumpet player by id
+app.put('/api/trumpet/:id', function update(req, res) {
+  var trumpetPlayer = req.params.id;
+  db.Trumpets.findOneAndUpdate({_id: req.params.id}, {$set: {song: req.body.song}}, function (err, trumpetPlayer) {
+    if (err) {
+      return console.log(err);
+    }
+    res.json(trumpetPlayer);
+  });
+});
+
+
+
+
 // delete a player
 app.delete('/api/trumpet/:id', function (req, res) {
   // get trumpet id from url params (`req.params`)
@@ -115,38 +131,25 @@ app.delete('/api/trumpet/:id', function (req, res) {
   });
 });
 
+// SOME OTHER LOGIC WORKOUT
+// if(!req.body.name || !req.body.city || !req.body.song || !req.body.alive) {
+//     res.send('name');
+//       } else if (res.send('city')) {        
+//         } else if (res.send('song')) {
+//           }  else if (res.send('alive')){          
+//         } else {
+//           req.body._id = playerId;
+        
+//         var thePlayer = trumpet.find(function(player) {
+//           return player._id === Number(req.params.id);
+//         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-
+//         thePlayer.name = req.body.name;
+//         thePlayer.city = req.body.city;
+//         thePlayer.song = req.body.song;
+//         thePlayer.alive = req.body.alive;
+//         res.json(thePlayer);
+//         } 
 
 // hardcoded trumpet player info
 // app.get('/api/players', function(req, res) {
